@@ -1,0 +1,249 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --gold-primary: #D4AF37;
+    --gold-light: #F4E295;
+    --gold-dark: #997A15;
+    --burgundy-deep: #4A0E17;
+    --burgundy-royal: #721825;
+    --rose-dust: #EED6D3;
+    --ivory-cream: #FCF9F2;
+    --ivory-card: #FFFFFF;
+    --emerald-deep: #16423C;
+    --font-serif: var(--font-cormorant), 'Playfair Display', Georgia, serif;
+    --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+    --font-arabic: var(--font-amiri), 'Scheherazade New', 'Amiri', serif;
+  }
+
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+
+  .font-arabic {
+    font-family: var(--font-arabic);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #FAF6F0;
+    color: #2D1810;
+  }
+}
+
+/* Custom Luxury Gradients & Shimmer */
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #ECC874 0%, #D4AF37 50%, #A8811C 100%);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #E6C875 0%, #D4AF37 40%, #B8860B 70%, #997A15 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-burgundy-gradient {
+  background: linear-gradient(135deg, #7A1926 0%, #4D0A14 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.border-gold-subtle {
+  border-color: rgba(212, 175, 55, 0.35);
+}
+
+.shadow-royal {
+  box-shadow: 0 10px 30px -10px rgba(114, 24, 37, 0.12), 0 20px 40px -15px rgba(212, 175, 55, 0.15);
+}
+
+.shadow-gold-glow {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+}
+
+/* Subtle floral/arch ornamental motif background */
+.bg-arabesque-pattern {
+  background-color: #FAF6F0;
+  background-image: radial-gradient(rgba(212, 175, 55, 0.12) 1px, transparent 1px),
+                    radial-gradient(rgba(114, 24, 37, 0.05) 1px, #FAF6F0 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+/* Floating animation */
+@keyframes softFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-soft-float {
+  animation: softFloat 5s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.03); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* 3D Cinematic Royal Door Opening Animation (Inspired by Hari & Jayashree) */
+.door-container {
+  perspective: 1400px;
+}
+
+.door-panel-left {
+  transform-origin: left center;
+  transition: transform 1.25s cubic-bezier(0.2, 0.8, 0.2, 1), filter 1.2s ease;
+  will-change: transform;
+}
+
+.door-panel-right {
+  transform-origin: right center;
+  transition: transform 1.25s cubic-bezier(0.2, 0.8, 0.2, 1), filter 1.2s ease;
+  will-change: transform;
+}
+
+.door-panel-left.open {
+  transform: rotateY(-88deg) translateZ(0);
+  filter: brightness(0.65);
+}
+
+.door-panel-right.open {
+  transform: rotateY(88deg) translateZ(0);
+  filter: brightness(0.65);
+}
+
+@keyframes introTwinkle {
+  0%, 100% { transform: scale(0.5); opacity: 0.2; }
+  50% { transform: scale(1.4); opacity: 1; }
+}
+
+.sparkle-dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #FFE4A5;
+  box-shadow: 0 0 16px #FFE4A5, 0 0 28px rgba(212, 175, 55, 0.8);
+  animation: introTwinkle 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes tapPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 16px rgba(212, 175, 55, 0);
+  }
+}
+
+.animate-tap-pulse {
+  animation: tapPulse 2.2s infinite ease-in-out;
+}
+
+/* Premium Scroll Reveal Animation via IntersectionObserver */
+.reveal-fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(4px);
+  transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.85s ease;
+  will-change: opacity, transform, filter;
+}
+
+.reveal-fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
+/* Subtle Falling Golden Petals & Shimmer Sparkles */
+@keyframes goldenPetalFall {
+  0% {
+    transform: translateY(-6vh) translateX(0) rotate(0deg) rotateX(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(52vh) translateX(28px) rotate(160deg) rotateX(40deg);
+    opacity: 0.75;
+  }
+  85% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translateY(108vh) translateX(-22px) rotate(340deg) rotateX(80deg);
+    opacity: 0;
+  }
+}
+
+@keyframes goldenSparkleFloat {
+  0% {
+    transform: translateY(-4vh) scale(0.6) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+    transform: translateY(22vh) scale(1.1) rotate(45deg);
+  }
+  80% {
+    opacity: 0.8;
+    transform: translateY(82vh) scale(0.85) rotate(180deg);
+  }
+  100% {
+    transform: translateY(106vh) scale(0.4) rotate(270deg);
+    opacity: 0;
+  }
+}
+
+.petal-particle {
+  position: absolute;
+  top: -8%;
+  border-radius: 70% 30% 70% 30%;
+  background: radial-gradient(circle at 35% 35%, #FFF7D8 0%, #ECC874 42%, #B8860B 100%);
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.28);
+  animation: goldenPetalFall linear infinite;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.sparkle-particle {
+  position: absolute;
+  top: -6%;
+  color: #F4E295;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.75);
+  animation: goldenSparkleFloat linear infinite;
+  will-change: transform, opacity;
+  pointer-events: none;
+  font-size: 13px;
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petal-particle,
+  .sparkle-particle {
+    display: none !important;
+  }
+}
+

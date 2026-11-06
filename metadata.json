@@ -1,0 +1,6 @@
+{
+  "name": "Ijas & Luhana - Royal Wedding Invitation",
+  "description": "Premium bespoke digital wedding invitation, ceremonies itinerary, live countdown timer, and venue navigation for the wedding celebrations of A. Ijas Ahamed and J. Luhana Fathima.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
