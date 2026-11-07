@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { Sparkles } from 'lucide-react';
 import MonogramSealSvg from './MonogramSealSvg';
@@ -18,7 +18,7 @@ interface EnvelopeGateProps {
  * - Master studio photographic representation of the authentic invitation card
  * - Pristine ivory pearl cardstock with watercolor crimson/burgundy peonies and gold botanicals
  * - Left and Right 3D double doors meeting down the exact center seam
- * - Central interactive monogram seal ("I & L") with tactile opening response
+ * - Central interactive monogram seal ("I & L") with instant touch & click opening response
  * - Reveals inner luxury parchment card with Bismillah and names before unfolding into the hero celebration
  */
 export default function InvitationEnvelopeGate({
@@ -27,34 +27,23 @@ export default function InvitationEnvelopeGate({
   isDismissed,
   onOpen,
 }: EnvelopeGateProps) {
-  const isTriggeredRef = useRef(false);
-
-  useEffect(() => {
-    if (!isOpen) {
-      isTriggeredRef.current = false;
-    }
-  }, [isOpen]);
-
   if (isDismissed) return null;
 
-  const handleTriggerOpen = (e?: React.SyntheticEvent) => {
-    if (e && e.type === 'touchend') {
-      // Prevent delayed ghost click on mobile
-      e.preventDefault();
+  const handleOpenTrigger = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    if (!isOpen) {
+      onOpen();
     }
-    if (isOpen || isTriggeredRef.current) return;
-    isTriggeredRef.current = true;
-    onOpen();
   };
 
   return (
     <div
-      onClick={handleTriggerOpen}
-      onTouchEnd={handleTriggerOpen}
+      onClick={handleOpenTrigger}
+      onTouchStart={handleOpenTrigger}
       className={`fixed inset-0 z-50 overflow-y-auto overflow-x-hidden select-none bg-radial from-[#22040d] via-[#120206] to-[#070103] transition-opacity duration-600 flex flex-col items-center justify-center p-3 sm:p-6 cursor-pointer ${
         isFadingOut ? 'pointer-events-none opacity-0' : 'opacity-100'
       }`}
-      aria-label="Wedding Gatefold Invitation"
+      aria-label="Wedding Gatefold Invitation - Tap anywhere to open"
     >
       {/* Ambient Silk Texture & Floating Golden Stars */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
@@ -159,10 +148,11 @@ export default function InvitationEnvelopeGate({
             isOpen ? 'opacity-0 scale-125 pointer-events-none' : 'opacity-100 scale-100'
           }`}
         >
-          <button
-            type="button"
-            onClick={handleTriggerOpen}
-            onTouchEnd={handleTriggerOpen}
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={handleOpenTrigger}
+            onTouchStart={handleOpenTrigger}
             aria-label="Touch monogram seal to open wedding invitation"
             className="group relative flex flex-col items-center cursor-pointer focus:outline-none pointer-events-auto"
           >
@@ -170,7 +160,7 @@ export default function InvitationEnvelopeGate({
             <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-[#D4AF37]/30 via-[#F4E295]/40 to-[#D4AF37]/30 blur-md pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity" />
 
             {/* Exact Monogram Seal Badge */}
-            <div className="relative rounded-full transition-transform duration-300 group-hover:scale-105 active:scale-95 shadow-[0_20px_45px_rgba(74,8,47,0.7)]">
+            <div className="relative rounded-full transition-transform duration-300 group-hover:scale-105 active:scale-95 shadow-[0_20px_45px_rgba(74,8,47,0.7)] pointer-events-auto">
               <MonogramSealSvg
                 size={175}
                 className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44"
@@ -185,7 +175,7 @@ export default function InvitationEnvelopeGate({
               </span>
               <Sparkles className="w-4 h-4 text-[#F4E295] animate-pulse" />
             </div>
-          </button>
+          </div>
         </div>
 
       </div>

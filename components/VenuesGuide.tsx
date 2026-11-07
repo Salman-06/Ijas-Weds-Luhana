@@ -75,30 +75,30 @@ export default function VenuesGuide() {
           </a>
         </div>
 
-        {/* Venue 2: The Palm Enclave, Coimbatore */}
+        {/* Venue 2: Divya Hall, Echanari, Coimbatore */}
         <div className="flex flex-col justify-between p-8 rounded-3xl bg-white border border-[#D4AF37]/50 shadow-royal">
           <div>
             <div className="flex items-center justify-between text-xs text-[#8A7968] mb-3">
               <span className="font-serif italic text-sm text-[#D4AF37]">
-                Mehendi &amp; Sangeet Gala
+                Mehendi Celebration
               </span>
               <span>Saturday, 12 Dec 2026</span>
             </div>
             <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#5d040f] mb-2">
-              The Palm Enclave
+              Divya Hall
             </h3>
             <p className="text-sm text-[#4A3B32] font-medium mb-1">
-              Near Sundarapuram, Madukkarai Road, Coimbatore, Tamil Nadu
+              Echanari, Opp Indane Gas Godown, Coimbatore, Tamil Nadu
             </p>
             <p className="text-xs text-[#8A7968] mb-6">
-              Lush open-air banquet lawns, fairy light arches, and tranquil ambiance for pre-wedding musical festivities.
+              Elegant banquet celebration hall with dedicated dining and convenient highway access for pre-wedding festivities.
             </p>
 
             {/* Travel tips */}
             <div className="space-y-2.5 pt-4 border-t border-[#F0E6D4] mb-6 text-xs text-[#5C4D44]">
               <div className="flex items-center gap-2">
                 <Car className="w-4 h-4 text-[#D4AF37] shrink-0" />
-                <span>By Road: Conveniently situated off Sundarapuram on Madukkarai Road.</span>
+                <span>By Road: Located at Echanari, directly opposite Indane Gas Godown on Pollachi Main Road.</span>
               </div>
               <div className="flex items-center gap-2">
                 <Train className="w-4 h-4 text-[#D4AF37] shrink-0" />
@@ -112,13 +112,13 @@ export default function VenuesGuide() {
           </div>
 
           <a
-            href="https://maps.google.com/?q=Sundarapuram+Coimbatore+Tamil+Nadu"
+            href="https://www.google.com/maps/place/DIVYA+HALL/@10.930111,76.986022,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba85b5f19dafb93:0x3dcd66364b465897!8m2!3d10.930111!4d76.986022!16s%2Fg%2F11vkh343g6?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#5d040f] text-white text-xs font-semibold hover:bg-[#7D1223] transition-colors shadow-sm cursor-pointer"
           >
             <Navigation className="w-4 h-4 text-[#F4E295]" />
-            <span>Open The Palm Enclave in Google Maps</span>
+            <span>Open Divya Hall in Google Maps</span>
           </a>
         </div>
       </div>

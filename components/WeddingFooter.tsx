@@ -13,12 +13,12 @@ export default function WeddingFooter() {
     <footer className="bg-[#5d040f] text-[#FAF6F0] pt-16 pb-12 px-4 border-t-2 border-[#D4AF37]">
       <div className="max-w-5xl mx-auto space-y-12">
         {/* Compliments Section as in the Card */}
-        <div className="text-center space-y-4 max-w-2xl mx-auto bg-black/20 p-8 rounded-3xl border border-[#D4AF37]/30">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[#F4E295]">
+        <div className="text-center space-y-2.5 max-w-xl mx-auto bg-black/20 p-5 rounded-2xl border border-[#D4AF37]/30">
+          <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#F4E295]/90">
             With The Best Compliments From
           </span>
 
-          <h3 className="font-serif text-2xl font-bold text-[#F4E295] tracking-wide">
+          <h3 className="font-serif text-xs sm:text-sm md:text-base font-semibold text-[#F4E295] tracking-wide">
             Family &apos;n&apos; Friends of Mr. M. Abdul Hakkeem &amp; Mr. S. Jaffer Ali
           </h3>
         </div>

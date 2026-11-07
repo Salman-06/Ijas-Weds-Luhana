@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Calendar, Clock, MapPin, Navigation, Sparkles, Shirt } from 'lucide-react';
+import { Calendar, Clock, MapPin, Navigation, Sparkles } from 'lucide-react';
 import { WEDDING_EVENTS, WeddingEvent } from '@/lib/wedding-data';
 
 export default function EventsItinerary() {
@@ -26,7 +26,7 @@ export default function EventsItinerary() {
         </h2>
         <p className="text-sm md:text-base text-[#6B5B52] max-w-2xl mx-auto">
           We invite you to grace each sacred ceremony with your presence and warm du&apos;as.
-          Explore the celebration timings, venue locations, and dress inspirations below.
+          Explore the celebration timings and venue locations below.
         </p>
 
         {/* Interactive Filter Tabs */}
@@ -51,7 +51,7 @@ export default function EventsItinerary() {
                 : 'text-[#6B5B52] hover:text-[#5d040f]'
             }`}
           >
-            Mehendi Alone
+            Mehendi
           </button>
           <button
             type="button"
@@ -62,7 +62,7 @@ export default function EventsItinerary() {
                 : 'text-[#6B5B52] hover:text-[#5d040f]'
             }`}
           >
-            Marriage (Nikah) Alone
+            Nikah (Marriage)
           </button>
         </div>
       </div>
@@ -91,7 +91,7 @@ export default function EventsItinerary() {
 
               {isMehendi && (
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#15803D] text-[#FEF08A] font-semibold text-[11px] uppercase tracking-wider rounded-full shadow-sm">
-                  Henna &amp; Haldi Ceremony
+                  Mehendi Celebration
                 </div>
               )}
 
@@ -150,27 +150,6 @@ export default function EventsItinerary() {
                 <p className="text-xs text-[#6B5B52] leading-relaxed mb-5">
                   {event.description}
                 </p>
-
-                {/* Dress Code Inspiration */}
-                <div className="pt-4 border-t border-[#F0E6D4] mb-6">
-                  <div className="flex items-center gap-1.5 text-xs text-[#5d040f] font-medium mb-2">
-                    <Shirt className="w-3.5 h-3.5 text-[#D4AF37]" />
-                    <span>Dress Code Suggestion:</span>
-                  </div>
-                  <div className="text-xs text-[#6B5B52] mb-2">
-                    {event.dressCode}
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    {event.paletteColors.map((color, i) => (
-                      <span
-                        key={i}
-                        className="w-4 h-4 rounded-full border border-black/10 shadow-xs"
-                        style={{ backgroundColor: color }}
-                        title={color}
-                      />
-                    ))}
-                  </div>
-                </div>
               </div>
 
               {/* Action Buttons */}

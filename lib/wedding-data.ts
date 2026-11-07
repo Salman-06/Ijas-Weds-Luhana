@@ -20,7 +20,7 @@ export interface WeddingEvent {
 export const WEDDING_COUPLE = {
   groom: {
     fullName: 'A. Ijas Ahamed',
-    title: 'B.E.,',
+    title: '',
     role: 'Groom',
     parents: 'S/o Mr. M. Abdul Hakkeem & Mrs. S. Shafi',
     familyCity: 'Coimbatore',
@@ -29,7 +29,7 @@ export const WEDDING_COUPLE = {
   },
   bride: {
     fullName: 'J. Luhana Fathima',
-     title: 'M.Sc., (Muballiha)',
+    title: '',
     role: 'Bride',
     parents: 'D/o Mr. S. Jaffer Ali & Mrs. M.G. Sujitha',
     familyCity: 'Meenakshipuram',
@@ -60,9 +60,11 @@ export const WEDDING_EVENTS: WeddingEvent[] = [
     venueName: 'Divya Hall',
     address: 'Echanari, Opp Indane Gas Godown',
     city: 'Coimbatore, Tamil Nadu',
+    dressCode: 'Festive Mustard, Olive & Emerald Florals',
+    paletteColors: ['#EAB308', '#15803D', '#B45309', '#FEF08A'],
     description:
       'An intimate evening of delicate henna patterns, joyous traditional melodies, laughter, and sweet pre-wedding celebrations.',
-    mapLink: 'https://maps.app.goo.gl/PvU4dMtRYwbdTK7g6',
+    mapLink: 'https://www.google.com/maps/place/DIVYA+HALL/@10.930111,76.986022,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba85b5f19dafb93:0x3dcd66364b465897!8m2!3d10.930111!4d76.986022!16s%2Fg%2F11vkh343g6?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D',
     calendarTitle: 'Ijas & Luhana - Mehendi Celebration',
   },
   {
@@ -77,6 +79,8 @@ export const WEDDING_EVENTS: WeddingEvent[] = [
     venueName: 'Sri Kantha Mahal',
     address: 'Coimbatore Main Road',
     city: 'Pollachi, Tamil Nadu',
+    dressCode: 'Traditional Silk & Kurta Sherwani',
+    paletteColors: ['#7A1926', '#D4AF37', '#FFFBF2', '#991B1B'],
     description:
       'The sacred Islamic marriage solemnization (Nikah) amidst blessings of Almighty Allah, family elders, and cherished friends, followed by traditional wedding lunch feast.',
     mapLink: 'https://maps.google.com/?q=Sri+Kantha+Mahal+Coimbatore+Main+Road+Pollachi',
