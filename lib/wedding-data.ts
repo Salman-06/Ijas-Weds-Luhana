@@ -20,7 +20,7 @@ export interface WeddingEvent {
 export const WEDDING_COUPLE = {
   groom: {
     fullName: 'A. Ijas Ahamed',
-    title: '',
+    title: 'B.E.,',
     role: 'Groom',
     parents: 'S/o Mr. M. Abdul Hakkeem & Mrs. S. Shafi',
     familyCity: 'Coimbatore',
@@ -29,7 +29,7 @@ export const WEDDING_COUPLE = {
   },
   bride: {
     fullName: 'J. Luhana Fathima',
-    title: '',
+     title: 'M.Sc., (Muballiha)',
     role: 'Bride',
     parents: 'D/o Mr. S. Jaffer Ali & Mrs. M.G. Sujitha',
     familyCity: 'Meenakshipuram',
