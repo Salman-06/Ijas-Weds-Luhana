@@ -20,7 +20,6 @@ export interface WeddingEvent {
 export const WEDDING_COUPLE = {
   groom: {
     fullName: 'A. Ijas Ahamed',
-    title: 'B.E.',
     role: 'Groom',
     parents: 'S/o Mr. M. Abdul Hakkeem & Mrs. S. Shafi',
     familyCity: 'Coimbatore',
@@ -29,7 +28,6 @@ export const WEDDING_COUPLE = {
   },
   bride: {
     fullName: 'J. Luhana Fathima',
-    title: 'M.Sc., (Muballiha)',
     role: 'Bride',
     parents: 'D/o Mr. S. Jaffer Ali & Mrs. M.G. Sujitha',
     familyCity: 'Meenakshipuram',
@@ -57,14 +55,14 @@ export const WEDDING_EVENTS: WeddingEvent[] = [
     dateIso: '2026-12-12T18:00:00+05:30',
     timeStr: '6:00 PM Onwards',
     hijriDate: 'Hijri 1448, Rajab 2',
-    venueName: 'The Palm Enclave',
-    address: 'Near Sundarapuram, Madukkarai Road',
+    venueName: 'Divya Hall',
+    address: 'Echanari, Opp Indane Gas Godown',
     city: 'Coimbatore, Tamil Nadu',
     dressCode: 'Festive Mustard, Olive & Emerald Florals',
     paletteColors: ['#EAB308', '#15803D', '#B45309', '#FEF08A'],
     description:
       'An intimate evening of delicate henna patterns, joyous traditional melodies, laughter, and sweet pre-wedding celebrations.',
-    mapLink: 'https://maps.google.com/?q=Sundarapuram+Coimbatore+Tamil+Nadu',
+    mapLink: 'https://maps.app.goo.gl/PvU4dMtRYwbdTK7g6',
     calendarTitle: 'Ijas & Luhana - Mehendi Celebration',
   },
   {
