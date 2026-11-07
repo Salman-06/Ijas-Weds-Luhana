@@ -51,7 +51,7 @@ export const WEDDING_EVENTS: WeddingEvent[] = [
   {
     id: 'mehendi',
     name: 'Mehendi Celebration',
-    tamilName: 'மஞ்சள் & மெஹந்தி திருவிழா',
+    tamilName: 'மெஹந்தி திருவிழா',
     type: 'mehendi',
     dateStr: 'Saturday, 12th December 2026',
     dateIso: '2026-12-12T18:00:00+05:30',
