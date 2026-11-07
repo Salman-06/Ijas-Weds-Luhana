@@ -2,6 +2,7 @@
 
 import { Heart, ChevronUp, Lock } from 'lucide-react';
 import { WEDDING_COUPLE } from '@/lib/wedding-data';
+import MonogramSealSvg from './MonogramSealSvg';
 
 export default function WeddingFooter() {
   const scrollToTop = () => {
@@ -9,7 +10,7 @@ export default function WeddingFooter() {
   };
 
   return (
-    <footer className="bg-[#4A0E17] text-[#FAF6F0] pt-16 pb-12 px-4 border-t-2 border-[#D4AF37]">
+    <footer className="bg-[#5d040f] text-[#FAF6F0] pt-16 pb-12 px-4 border-t-2 border-[#D4AF37]">
       <div className="max-w-5xl mx-auto space-y-12">
         {/* Compliments Section as in the Card */}
         <div className="text-center space-y-4 max-w-2xl mx-auto bg-black/20 p-8 rounded-3xl border border-[#D4AF37]/30">
@@ -17,26 +18,15 @@ export default function WeddingFooter() {
             With The Best Compliments From
           </span>
 
-          <div className="space-y-1">
-            <h3 className="font-serif text-2xl font-bold text-[#F4E295] tracking-wide">
-              {WEDDING_COUPLE.groom.company}
-            </h3>
-            <p className="text-xs text-[#EED6D3] italic">
-              {WEDDING_COUPLE.groom.tagline} · Coimbatore
-            </p>
-          </div>
-
-          <div className="h-[1px] w-24 bg-[#D4AF37]/40 mx-auto my-3" />
-
-          <p className="text-xs text-[#E8DCC9]">
+          <h3 className="font-serif text-2xl font-bold text-[#F4E295] tracking-wide">
             Family &apos;n&apos; Friends of Mr. M. Abdul Hakkeem &amp; Mr. S. Jaffer Ali
-          </p>
+          </h3>
         </div>
 
         {/* Monogram and Du'a */}
         <div className="text-center space-y-3">
-          <div className="font-serif text-3xl font-bold text-[#F4E295] tracking-widest">
-            {WEDDING_COUPLE.monogram}
+          <div className="flex justify-center mb-1">
+            <MonogramSealSvg size={80} className="w-20 h-20 drop-shadow-md" />
           </div>
           <div className="font-serif text-lg font-medium text-white">
             {WEDDING_COUPLE.groom.fullName} &amp; {WEDDING_COUPLE.bride.fullName}
@@ -50,9 +40,23 @@ export default function WeddingFooter() {
         </div>
 
         {/* Bottom row */}
-        <div className="pt-8 border-t border-[#721825] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#E8DCC9]/70">
+        <div className="pt-8 border-t border-[#3A0208] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#E8DCC9]/70">
           <div>
-            12th, 13th &amp; 14th December 2026 · Pollachi &amp; Coimbatore
+            12th &amp; 13th December 2026 · Pollachi &amp; Coimbatore
+          </div>
+
+          {/* Developed by GenSyx Solutions */}
+          <div className="flex items-center gap-1.5 text-xs text-[#EED6D3]">
+            <span>Developed by</span>
+            <a
+              href="https://gensyx-solutions.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="GenSyx Solutions | Next-Gen Digital Systems & Software Engineering"
+              className="font-medium text-[#F4E295] hover:text-white underline underline-offset-4 transition-colors"
+            >
+              GenSyx Solutions
+            </a>
           </div>
 
           <div className="flex items-center gap-4">

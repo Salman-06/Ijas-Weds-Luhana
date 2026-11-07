@@ -2,7 +2,7 @@ export interface WeddingEvent {
   id: string;
   name: string;
   tamilName: string;
-  type: 'mehendi' | 'marriage' | 'reception';
+  type: 'mehendi' | 'marriage';
   dateStr: string; // e.g. "Saturday, 12th December 2026"
   dateIso: string; // e.g. "2026-12-12T18:00:00"
   timeStr: string; // e.g. "6:00 PM Onwards"
@@ -22,16 +22,16 @@ export const WEDDING_COUPLE = {
     fullName: 'A. Ijas Ahamed',
     title: 'B.E.',
     role: 'Groom',
-    parents: 'Mr. M. Abdul Hakkeem & Mrs. S. Shafi',
+    parents: 'S/o Mr. M. Abdul Hakkeem & Mrs. S. Shafi',
     familyCity: 'Coimbatore',
     company: 'Smile Automation',
     tagline: 'Definite Machining Solution',
   },
   bride: {
     fullName: 'J. Luhana Fathima',
-    title: 'M.Sc., (Muballidha)',
+    title: 'M.Sc., (Muballiha)',
     role: 'Bride',
-    parents: 'Mr. S. Jaffer Ali & Mrs. M.G. Sujitha',
+    parents: 'D/o Mr. S. Jaffer Ali & Mrs. M.G. Sujitha',
     familyCity: 'Meenakshipuram',
   },
   monogram: 'IL',
@@ -79,32 +79,13 @@ export const WEDDING_EVENTS: WeddingEvent[] = [
     venueName: 'Sri Kantha Mahal',
     address: 'Coimbatore Main Road',
     city: 'Pollachi, Tamil Nadu',
-    dressCode: 'Royal Traditional Silk & Kurta Sherwani',
+    dressCode: 'Traditional Silk & Kurta Sherwani',
     paletteColors: ['#7A1926', '#D4AF37', '#FFFBF2', '#991B1B'],
     description:
       'The sacred Islamic marriage solemnization (Nikah) amidst blessings of Almighty Allah, family elders, and cherished friends, followed by traditional wedding lunch feast.',
     mapLink: 'https://maps.google.com/?q=Sri+Kantha+Mahal+Coimbatore+Main+Road+Pollachi',
     calendarTitle: 'Ijas & Luhana - Nikah Marriage Ceremony',
-  },
-  {
-    id: 'reception',
-    name: 'Grand Wedding Reception',
-    tamilName: 'திருமண வரவேற்பு விழா',
-    type: 'reception',
-    dateStr: 'Monday, 14th December 2026',
-    dateIso: '2026-12-14T18:30:00+05:30',
-    timeStr: '6:30 PM Onwards',
-    hijriDate: 'Hijri 1448, Rajab 4',
-    venueName: 'Lindes Garden',
-    address: 'Madukkarai Road, Sundarapuram',
-    city: 'Coimbatore - 641 105, Tamil Nadu',
-    dressCode: 'Royal Evening Elegance / Indo-Western Attire',
-    paletteColors: ['#4A0E17', '#ECC874', '#1E293B', '#F1F5F9'],
-    description:
-      'A majestic evening reception to congratulate the newlyweds with stage felicitations, photographic memories, and a grand celebratory dinner dawat.',
-    mapLink: 'https://maps.google.com/?q=Lindes+Garden+Madukkarai+Road+Sundarapuram+Coimbatore+641105',
-    calendarTitle: 'Ijas & Luhana - Grand Wedding Reception',
-  },
+  }
 ];
 
 

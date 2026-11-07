@@ -14,25 +14,56 @@ import ScrollReveal from '@/components/ScrollReveal';
 import GoldenPetalsRain from '@/components/GoldenPetalsRain';
 
 export default function WeddingPage() {
-  const [isGateOpened, setIsGateOpened] = useState(false);
+  const [isGateOpen, setIsGateOpen] = useState(false);
+  const [isGateFadingOut, setIsGateFadingOut] = useState(false);
+  const [isGateDismissed, setIsGateDismissed] = useState(false);
+  const [isMusicStarted, setIsMusicStarted] = useState(false);
 
   const handleOpenGate = () => {
-    setIsGateOpened(true);
+    setIsGateOpen(true);
+    setIsMusicStarted(true);
+    // Allow the 3D doors to smoothly swing open and reveal the inner parchment card
+    setTimeout(() => {
+      setIsGateFadingOut(true);
+    }, 1200);
+    setTimeout(() => {
+      setIsGateDismissed(true);
+    }, 1750);
+  };
+
+  const handleSkipGate = () => {
+    setIsGateOpen(true);
+    setIsGateFadingOut(true);
+    setIsGateDismissed(true);
+    setIsMusicStarted(true);
+  };
+
+  const handleReplayGate = () => {
+    setIsGateDismissed(false);
+    setIsGateFadingOut(false);
+    setIsGateOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <div className="min-h-screen bg-arabesque-pattern relative flex flex-col">
-      {/* 3D Royal Palace Doors Opening Animation (Inspired by Hari & Jayashree) */}
-      <InvitationEnvelopeGate onOpen={handleOpenGate} />
+      {/* 3D Realistic Gatefold Card Opening Experience */}
+      <InvitationEnvelopeGate
+        isOpen={isGateOpen}
+        isFadingOut={isGateFadingOut}
+        isDismissed={isGateDismissed}
+        onOpen={handleOpenGate}
+        onSkip={handleSkipGate}
+      />
 
       {/* Subtle Falling Golden Petals & Sparkles Ambient Effect */}
       <GoldenPetalsRain />
 
       {/* Floating Audio Ambient Melody Player */}
-      <AudioMelodyPlayer autoStart={isGateOpened} />
+      <AudioMelodyPlayer autoStart={isMusicStarted} />
 
-      {/* Top Navigation Bar */}
-      <WeddingHeader />
+      {/* Top Navigation Bar with View Card Replay */}
+      <WeddingHeader onReplayCard={handleReplayGate} />
 
       {/* Main Content Sections */}
       <main className="flex-1">
@@ -56,7 +87,7 @@ export default function WeddingPage() {
           <SpiritualVerses />
         </ScrollReveal>
 
-        {/* Venues & Travel Directions Guide with QR Codes */}
+        {/* Venues & Travel Directions Guide */}
         <ScrollReveal threshold={0.1}>
           <VenuesGuide />
         </ScrollReveal>

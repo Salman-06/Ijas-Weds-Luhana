@@ -137,8 +137,8 @@ export default function AudioMelodyPlayer({ autoStart = false }: { autoStart?: b
         title={isPlaying ? 'Pause Instrumental Music' : 'Play Instrumental Music'}
         className={`group flex items-center gap-2.5 px-3.5 py-2.5 rounded-full backdrop-blur-md transition-all duration-300 shadow-royal border ${
           isPlaying
-            ? 'bg-[#721825]/90 text-[#F4E295] border-[#D4AF37]/50 shadow-gold-glow'
-            : 'bg-white/90 text-[#4A0E17] border-[#D4AF37]/30 hover:border-[#D4AF37]'
+            ? 'bg-[#5d040f]/90 text-[#F4E295] border-[#D4AF37]/50 shadow-gold-glow'
+            : 'bg-white/90 text-[#5d040f] border-[#D4AF37]/30 hover:border-[#D4AF37]'
         }`}
       >
         <div className="relative flex items-center justify-center">
@@ -149,7 +149,7 @@ export default function AudioMelodyPlayer({ autoStart = false }: { autoStart?: b
               <span className="w-1 bg-[#F4E295] rounded-full animate-pulse h-3.5" />
             </div>
           ) : (
-            <Music className="w-4 h-4 text-[#721825]" />
+            <Music className="w-4 h-4 text-[#5d040f]" />
           )}
         </div>
 

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <title>Monogram L and I</title>
+  <desc>Maroon circular monogram with a gold serif I and an elegant white ornamental L.</desc>
+  <circle cx="600" cy="600" r="570" fill="#4A082F"/>
+
+  <!-- Gold serif capital I -->
+  <path fill="#D8C99A" d="
+    M 405,345
+    C 472,345 535,345 600,345
+    C 665,345 728,345 795,345
+    L 795,359
+    C 722,361 680,375 660,402
+    C 645,422 640,453 640,500
+    L 640,700
+    C 640,747 645,778 660,798
+    C 680,825 722,839 795,841
+    L 795,855
+    C 728,855 665,855 600,855
+    C 535,855 472,855 405,855
+    L 405,841
+    C 478,839 520,825 540,798
+    C 555,778 560,747 560,700
+    L 560,500
+    C 560,453 555,422 540,402
+    C 520,375 478,361 405,359
+    Z"/>
+
+  <!-- White ornamental script L, drawn as a single flowing vector -->
+  <path d="
+    M 455,448
+    C 390,397 304,383 250,412
+    C 203,437 196,482 222,523
+    C 254,574 329,603 420,610
+    C 486,615 552,604 612,578
+    C 682,548 744,502 793,448
+    C 842,394 878,335 878,283
+    C 878,235 846,208 802,212
+    C 752,216 705,261 668,315
+    C 622,383 586,473 548,568
+    C 508,667 468,759 411,824
+    C 359,883 298,917 247,902
+    C 202,889 180,854 191,819
+    C 203,780 248,757 301,760
+    C 354,763 405,791 456,817
+    M 548,855
+    C 615,873 689,895 756,893
+    C 818,891 861,868 876,833
+    C 888,806 879,778 864,756"
+    fill="none" stroke="#F4F1F2" stroke-width="18"
+    stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Slightly tapered finishing stroke on the lower flourish -->
+  <path d="M 864,756 C 879,779 889,807 876,833"
+    fill="none" stroke="#F4F1F2" stroke-width="12"
+    stroke-linecap="round"/>
+</svg>

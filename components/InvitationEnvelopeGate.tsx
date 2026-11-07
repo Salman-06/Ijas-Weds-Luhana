@@ -1,175 +1,195 @@
 'use client';
 
-import { useState } from 'react';
-import { WEDDING_COUPLE } from '@/lib/wedding-data';
+import React, { useRef, useEffect } from 'react';
+import Image from 'next/image';
+import { Sparkles } from 'lucide-react';
+import MonogramSealSvg from './MonogramSealSvg';
 
 interface EnvelopeGateProps {
+  isOpen: boolean;
+  isFadingOut: boolean;
+  isDismissed: boolean;
   onOpen: () => void;
+  onSkip: () => void;
 }
 
-export default function InvitationEnvelopeGate({ onOpen }: EnvelopeGateProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isDismissed, setIsDismissed] = useState(false);
+/**
+ * Cinematic Wedding Gatefold Invitation Cover:
+ * - Master studio photographic representation of the authentic invitation card
+ * - Pristine ivory pearl cardstock with watercolor crimson/burgundy peonies and gold botanicals
+ * - Left and Right 3D double doors meeting down the exact center seam
+ * - Central interactive monogram seal ("I & L") with tactile opening response
+ * - Reveals inner luxury parchment card with Bismillah and names before unfolding into the hero celebration
+ */
+export default function InvitationEnvelopeGate({
+  isOpen,
+  isFadingOut,
+  isDismissed,
+  onOpen,
+}: EnvelopeGateProps) {
+  const isTriggeredRef = useRef(false);
 
-  const handleOpenClick = () => {
-    if (isOpen) return;
-    setIsOpen(true);
-    // Allow the 3D doors to swing open fully before unmounting
-    setTimeout(() => {
-      onOpen();
-    }, 1100);
-    setTimeout(() => {
-      setIsDismissed(true);
-    }, 1500);
-  };
+  useEffect(() => {
+    if (!isOpen) {
+      isTriggeredRef.current = false;
+    }
+  }, [isOpen]);
 
   if (isDismissed) return null;
 
+  const handleTriggerOpen = (e?: React.SyntheticEvent) => {
+    if (e && e.type === 'touchend') {
+      // Prevent delayed ghost click on mobile
+      e.preventDefault();
+    }
+    if (isOpen || isTriggeredRef.current) return;
+    isTriggeredRef.current = true;
+    onOpen();
+  };
+
   return (
     <div
-      className={`fixed inset-0 z-50 overflow-hidden select-none door-container bg-[#13070A] transition-opacity duration-700 ${
-        isOpen ? 'pointer-events-none' : ''
+      onClick={handleTriggerOpen}
+      onTouchEnd={handleTriggerOpen}
+      className={`fixed inset-0 z-50 overflow-y-auto overflow-x-hidden select-none bg-radial from-[#22040d] via-[#120206] to-[#070103] transition-opacity duration-600 flex flex-col items-center justify-center p-3 sm:p-6 cursor-pointer ${
+        isFadingOut ? 'pointer-events-none opacity-0' : 'opacity-100'
       }`}
-      aria-label="Open wedding invitation"
+      aria-label="Wedding Gatefold Invitation"
     >
-      {/* 3D Double Doors */}
-      <div className="relative w-full h-full flex">
-        {/* Left Door */}
-        <div
-          className={`door-panel-left relative w-1/2 h-full bg-gradient-to-r from-[#2B0A11] via-[#4A0E17] to-[#360913] border-r border-[#D4AF37]/50 shadow-2xl flex flex-col justify-between p-6 md:p-12 ${
-            isOpen ? 'open' : ''
-          }`}
-          style={{
-            backgroundImage: `radial-gradient(circle at 100% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 60%), linear-gradient(180deg, #1A050B 0%, #4A0E17 50%, #1A050B 100%)`,
-          }}
-        >
-          {/* Ornate Gold Filigree Molding - Left Door */}
-          <div className="absolute inset-4 md:inset-8 border-2 border-[#D4AF37]/40 rounded-2xl pointer-events-none">
-            <div className="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-[#D4AF37]" />
-            <div className="absolute bottom-2 left-2 w-8 h-8 border-b-2 border-l-2 border-[#D4AF37]" />
-            <div className="absolute top-1/2 right-0 -translate-y-1/2 w-6 h-24 border-r-2 border-[#D4AF37]/60" />
-          </div>
+      {/* Ambient Silk Texture & Floating Golden Stars */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.12)_0%,transparent_70%)]" />
+        <span className="sparkle-dot" style={{ left: '15%', top: '18%', animationDelay: '-0.2s' }} />
+        <span className="sparkle-dot" style={{ left: '82%', top: '22%', animationDelay: '-1.5s' }} />
+        <span className="sparkle-dot" style={{ left: '22%', top: '78%', animationDelay: '-0.8s' }} />
+        <span className="sparkle-dot" style={{ left: '78%', top: '75%', animationDelay: '-2.1s' }} />
+        <span className="sparkle-dot" style={{ left: '12%', top: '50%', animationDelay: '-1.1s' }} />
+        <span className="sparkle-dot" style={{ left: '88%', top: '48%', animationDelay: '-2.4s' }} />
+        <span className="sparkle-dot" style={{ left: '50%', top: '8%', animationDelay: '-1.7s' }} />
+      </div>
 
-          {/* Left Door Carved Arch Motif */}
-          <div className="hidden sm:block absolute top-12 left-12 right-6 bottom-12 border border-[#D4AF37]/20 rounded-t-full pointer-events-none opacity-40" />
+      {/* Realistic Physical Gatefold Invitation Card - Expanded Full Page Size */}
+      <div className="relative z-20 w-[96vw] sm:w-[88vw] md:w-[720px] lg:w-[800px] h-[76vh] sm:h-[82vh] md:h-[86vh] max-h-[900px] aspect-[4/3.4] sm:aspect-[4/3.2] door-container cursor-pointer">
+        
+        {/* INNER CARD (Revealed in 3D when left and right gatefold doors swing open) */}
+        <div className="absolute inset-0 rounded-3xl bg-[#FCF9F2] p-8 sm:p-12 md:p-16 flex flex-col items-center justify-center text-center select-none border-4 border-[#FAF0E1] shadow-2xl z-0">
+          {/* Subtle Gold Damask Filigree Border */}
+          <div className="absolute inset-3 sm:inset-4 border border-[#D4AF37]/40 rounded-2xl pointer-events-none" />
+          <div className="absolute inset-4 sm:inset-6 border border-[#D4AF37]/20 rounded-xl pointer-events-none" />
 
-          {/* Left Handle */}
-          <div className="absolute right-3 md:right-5 top-1/2 -translate-y-1/2 w-3 md:w-4 h-24 md:h-32 rounded-full bg-gradient-to-b from-[#ECC874] via-[#D4AF37] to-[#A8811C] shadow-lg border border-[#F4E295]/80 flex items-center justify-center">
-            <div className="w-1 h-12 bg-[#5C101C]/60 rounded-full" />
+          {/* Bismillah Calligraphy */}
+          <p className="font-arabic text-3xl sm:text-4xl text-[#5d040f] mb-3 leading-relaxed drop-shadow-xs">
+            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+          </p>
+          <p className="font-serif italic text-xs sm:text-sm text-[#6B5B52] mb-4 tracking-wide">
+            In the name of Allah, the Most Beneficent, the Most Merciful
+          </p>
+
+          <span className="text-[#D4AF37] text-lg my-1">❦</span>
+
+          <p className="text-xs sm:text-sm uppercase tracking-[0.25em] text-[#7A5A43] font-semibold mb-3">
+            With the blessings of Almighty Allah
+          </p>
+
+          <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#5d040f] leading-snug tracking-wide">
+            A. Ijas Ahamed
+          </h3>
+          <span className="text-sm font-serif italic text-[#D4AF37] my-1">&amp;</span>
+          <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#5d040f] leading-snug mb-4 tracking-wide">
+            J. Luhana Fathima
+          </h3>
+
+          <p className="text-xs sm:text-sm text-[#52443C] max-w-md leading-relaxed mb-5 font-serif">
+            Cordially request the honour of your auspicious presence and blessings on the joyous occasion of their wedding celebrations.
+          </p>
+
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#FAF0E1] border border-[#D4AF37]/40 text-xs font-semibold tracking-widest text-[#5d040f] uppercase shadow-xs">
+            <span>December 12 &amp; 13, 2026</span>
           </div>
         </div>
 
-        {/* Right Door */}
-        <div
-          className={`door-panel-right relative w-1/2 h-full bg-gradient-to-l from-[#2B0A11] via-[#4A0E17] to-[#360913] border-l border-[#D4AF37]/50 shadow-2xl flex flex-col justify-between p-6 md:p-12 ${
-            isOpen ? 'open' : ''
-          }`}
-          style={{
-            backgroundImage: `radial-gradient(circle at 0% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 60%), linear-gradient(180deg, #1A050B 0%, #4A0E17 50%, #1A050B 100%)`,
-          }}
-        >
-          {/* Ornate Gold Filigree Molding - Right Door */}
-          <div className="absolute inset-4 md:inset-8 border-2 border-[#D4AF37]/40 rounded-2xl pointer-events-none">
-            <div className="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-[#D4AF37]" />
-            <div className="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-[#D4AF37]" />
-            <div className="absolute top-1/2 left-0 -translate-y-1/2 w-6 h-24 border-l-2 border-[#D4AF37]/60" />
-          </div>
-
-          {/* Right Door Carved Arch Motif */}
-          <div className="hidden sm:block absolute top-12 left-6 right-12 bottom-12 border border-[#D4AF37]/20 rounded-t-full pointer-events-none opacity-40" />
-
-          {/* Right Handle */}
-          <div className="absolute left-3 md:left-5 top-1/2 -translate-y-1/2 w-3 md:w-4 h-24 md:h-32 rounded-full bg-gradient-to-b from-[#ECC874] via-[#D4AF37] to-[#A8811C] shadow-lg border border-[#F4E295]/80 flex items-center justify-center">
-            <div className="w-1 h-12 bg-[#5C101C]/60 rounded-full" />
-          </div>
-        </div>
-      </div>
-
-      {/* Atmospheric Golden Sparkles Layer */}
-      <div className="absolute inset-0 pointer-events-none z-10" aria-hidden="true">
-        <span className="sparkle-dot" style={{ left: '18%', top: '22%', animationDelay: '-0.3s' }} />
-        <span className="sparkle-dot" style={{ left: '78%', top: '16%', animationDelay: '-1.4s' }} />
-        <span className="sparkle-dot" style={{ left: '32%', top: '75%', animationDelay: '-0.7s' }} />
-        <span className="sparkle-dot" style={{ left: '68%', top: '70%', animationDelay: '-2.1s' }} />
-        <span className="sparkle-dot" style={{ left: '12%', top: '56%', animationDelay: '-1.2s' }} />
-        <span className="sparkle-dot" style={{ left: '88%', top: '48%', animationDelay: '-2.5s' }} />
-        <span className="sparkle-dot" style={{ left: '50%', top: '12%', animationDelay: '-1.8s' }} />
-      </div>
-
-      {/* Central Royal Interactive Touch Badge (Like Hari & Jayashree) */}
-      <div
-        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 transition-all duration-700 flex flex-col items-center justify-center ${
-          isOpen ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100'
-        }`}
-      >
-        <button
-          type="button"
-          onClick={handleOpenClick}
-          aria-label="Touch here to open royal wedding invitation"
-          className="group relative flex flex-col items-center gap-3 p-6 md:p-8 rounded-3xl bg-[#23070E]/85 backdrop-blur-md border-2 border-[#D4AF37] shadow-2xl hover:border-[#F4E295] transition-all duration-300 cursor-pointer max-w-sm sm:max-w-md text-center"
-        >
-          {/* Subtle gold ambient glow */}
-          <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-[#D4AF37]/30 via-[#ECC874]/40 to-[#D4AF37]/30 blur-md pointer-events-none" />
-
-          {/* Spark Star */}
-          <span className="text-[#F4E295] text-base">✦</span>
-
-          {/* Arabic Bismillah */}
-          <div className="font-arabic text-lg sm:text-xl text-[#F4E295] leading-relaxed">
-            {WEDDING_COUPLE.bismillahArabic}
-          </div>
-
-          {/* Couple Script Names */}
-          <div className="space-y-1">
-            <span className="block font-serif text-2xl sm:text-3xl md:text-4xl text-[#FFF4C9] font-bold tracking-tight">
-              {WEDDING_COUPLE.groom.fullName}
-            </span>
-            <span className="block text-[#F4C768] text-lg sm:text-xl">♥</span>
-            <span className="block font-serif text-2xl sm:text-3xl md:text-4xl text-[#FFF4C9] font-bold tracking-tight">
-              {WEDDING_COUPLE.bride.fullName}
-            </span>
-          </div>
-
-          {/* Auspicious Dates */}
-          <div className="text-[11px] sm:text-xs text-[#EED6D3] uppercase tracking-widest font-medium mt-1">
-            12 · 13 · 14 December 2026
-          </div>
-
-          {/* Glowing Animated Tap Ring Icon */}
-          <div className="mt-3 relative flex items-center justify-center">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-[#F4E295] bg-[#5C101C]/60 flex items-center justify-center animate-tap-pulse">
-              <svg
-                viewBox="0 0 64 64"
-                className="w-7 h-7 sm:w-8 sm:h-8 text-[#FFE1A2]"
-                role="img"
-                aria-hidden="true"
-              >
-                <path
-                  d="M31 52V31.5a3.5 3.5 0 0 1 7 0v8l2.5-2.5a3.5 3.5 0 0 1 5 0l2 2 1.5-1.5a3.5 3.5 0 0 1 5 0l1 1a8 8 0 0 1 2.3 6.7L56 52c-.8 6-5.5 10-11.5 10H36c-5.8 0-10.7-3.8-12.4-9.3l-4.2-13.2a3.8 3.8 0 0 1 7.2-2.3l4.4 9.2V21a3.5 3.5 0 0 1 7 0v14.5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="3.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+        {/* 3D GATEFOLD DOUBLE DOORS CONTAINER */}
+        <div className="absolute inset-0 rounded-3xl overflow-hidden border-2 border-[#D4AF37]/70 shadow-[0_35px_80px_-15px_rgba(0,0,0,0.95),0_0_60px_rgba(212,175,55,0.3)] bg-[#FAF5EB] pointer-events-none z-10">
+          <div className="absolute inset-0 flex" style={{ transformStyle: 'preserve-3d' }}>
+            {/* LEFT DOOR PANEL */}
+            <div
+              className={`door-panel-left absolute left-0 top-0 w-1/2 h-full overflow-hidden ${
+                isOpen ? 'open' : ''
+              }`}
+            >
+              <div className="relative w-full h-full bg-[#FAF5EB]">
+                <Image
+                  src="/assets/images/door_left_studio.jpg"
+                  alt="Wedding Invitation Left Gatefold Door"
+                  fill
+                  priority
+                  unoptimized
+                  className="object-cover object-right"
                 />
-                <path
-                  d="M20 16c0-7 5.4-12 12-12s12 5 12 12M13 19C13 8.5 21.5 0 32 0s19 8.5 19 19"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  opacity="0.75"
+                <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black/30 to-transparent pointer-events-none" />
+                <div className="absolute inset-y-0 right-0 w-[2px] bg-[#D4AF37]/90 pointer-events-none" />
+              </div>
+            </div>
+
+            {/* RIGHT DOOR PANEL */}
+            <div
+              className={`door-panel-right absolute right-0 top-0 w-1/2 h-full overflow-hidden ${
+                isOpen ? 'open' : ''
+              }`}
+            >
+              <div className="relative w-full h-full bg-[#FAF5EB]">
+                <Image
+                  src="/assets/images/door_right_studio.jpg"
+                  alt="Wedding Invitation Right Gatefold Door"
+                  fill
+                  priority
+                  unoptimized
+                  className="object-cover object-left"
                 />
-              </svg>
+                <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black/30 to-transparent pointer-events-none" />
+                <div className="absolute inset-y-0 left-0 w-[2px] bg-[#D4AF37]/90 pointer-events-none" />
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Action text */}
-          <small className="block text-[11px] font-bold text-[#FFF1C5] tracking-[0.2em] uppercase mt-1">
-            TOUCH HERE TO OPEN
-          </small>
-        </button>
+        {/* CENTRAL INTERACTIVE MONOGRAM SEAL */}
+        <div
+          className={`absolute top-[51.5%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-700 flex flex-col items-center justify-center pointer-events-auto ${
+            isOpen ? 'opacity-0 scale-125 pointer-events-none' : 'opacity-100 scale-100'
+          }`}
+        >
+          <button
+            type="button"
+            onClick={handleTriggerOpen}
+            onTouchEnd={handleTriggerOpen}
+            aria-label="Touch monogram seal to open wedding invitation"
+            className="group relative flex flex-col items-center cursor-pointer focus:outline-none pointer-events-auto"
+          >
+            {/* Soft subtle glow behind badge */}
+            <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-[#D4AF37]/30 via-[#F4E295]/40 to-[#D4AF37]/30 blur-md pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity" />
+
+            {/* Exact Monogram Seal Badge */}
+            <div className="relative rounded-full transition-transform duration-300 group-hover:scale-105 active:scale-95 shadow-[0_20px_45px_rgba(74,8,47,0.7)]">
+              <MonogramSealSvg
+                size={175}
+                className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44"
+              />
+            </div>
+
+            {/* "TOUCH SEAL TO OPEN" Interactive Action Button */}
+            <div className="mt-4 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full bg-[#4A082F]/95 backdrop-blur-md border-2 border-[#D4AF37] shadow-[0_12px_28px_rgba(74,8,47,0.65)] flex items-center gap-2.5 group-hover:bg-[#5d040f] group-hover:border-[#F4E295] group-hover:scale-105 transition-all pointer-events-auto">
+              <Sparkles className="w-4 h-4 text-[#F4E295] animate-pulse" />
+              <span className="text-[11px] sm:text-xs font-bold text-[#FFF5D6] tracking-[0.3em] uppercase drop-shadow-xs">
+                TOUCH SEAL TO OPEN
+              </span>
+              <Sparkles className="w-4 h-4 text-[#F4E295] animate-pulse" />
+            </div>
+          </button>
+        </div>
+
       </div>
+
     </div>
   );
 }

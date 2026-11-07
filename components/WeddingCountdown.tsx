@@ -105,12 +105,12 @@ export default function WeddingCountdown() {
 
         {/* Section kicker */}
         <div className="text-center space-y-2 mb-8">
-          <div className="inline-flex items-center gap-2 text-xs tracking-widest uppercase text-[#721825] font-semibold">
+          <div className="inline-flex items-center gap-2 text-xs tracking-widest uppercase text-[#5d040f] font-semibold">
             <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
             <span>Counting Down The Moments</span>
             <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
           </div>
-          <h2 className="font-serif text-3xl md:text-4xl text-[#4A0E17] font-semibold">
+          <h2 className="font-serif text-3xl md:text-4xl text-[#5d040f] font-semibold">
             Until We Celebrate Together
           </h2>
           <p className="text-sm md:text-base text-[#6B5B52] max-w-xl mx-auto">
@@ -129,8 +129,8 @@ export default function WeddingCountdown() {
                 onClick={() => setSelectedEventId(event.id)}
                 className={`px-4 py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
                   isSelected
-                    ? 'bg-[#721825] text-[#FAF6F0] shadow-md shadow-[#721825]/20 ring-2 ring-[#D4AF37]'
-                    : 'bg-white text-[#5C4D44] border border-[#E8DCC9] hover:border-[#D4AF37] hover:text-[#721825]'
+                    ? 'bg-[#5d040f] text-[#FAF6F0] shadow-md shadow-[#5d040f]/20 ring-2 ring-[#D4AF37]'
+                    : 'bg-white text-[#5C4D44] border border-[#E8DCC9] hover:border-[#D4AF37] hover:text-[#5d040f]'
                 }`}
               >
                 {event.name}
@@ -152,7 +152,7 @@ export default function WeddingCountdown() {
               className="flex flex-col items-center justify-center p-5 md:p-7 rounded-2xl bg-white border border-[#E8D7B8] shadow-sm relative overflow-hidden group hover:border-[#D4AF37] transition-all"
             >
               <div className="absolute inset-x-0 top-0 h-1 bg-gold-gradient opacity-80" />
-              <span className="font-serif text-4xl md:text-5xl font-bold text-[#721825] tabular-nums tracking-tight">
+              <span className="font-serif text-4xl md:text-5xl font-bold text-[#5d040f] tabular-nums tracking-tight">
                 {String(item.value).padStart(2, '0')}
               </span>
               <span className="mt-1.5 text-xs font-medium uppercase tracking-wider text-[#8A7968]">
@@ -165,11 +165,11 @@ export default function WeddingCountdown() {
         {/* Event Detail Summary Strip */}
         <div className="bg-[#FAF4E6] rounded-2xl p-4 md:p-6 border border-[#E0D0B6] flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3 text-left">
-            <div className="w-10 h-10 rounded-full bg-[#721825]/10 flex items-center justify-center shrink-0">
-              <Calendar className="w-5 h-5 text-[#721825]" />
+            <div className="w-10 h-10 rounded-full bg-[#5d040f]/10 flex items-center justify-center shrink-0">
+              <Calendar className="w-5 h-5 text-[#5d040f]" />
             </div>
             <div>
-              <div className="text-sm font-semibold text-[#4A0E17]">
+              <div className="text-sm font-semibold text-[#5d040f]">
                 {activeEvent.name} · {activeEvent.dateStr}
               </div>
               <div className="text-xs text-[#7A6A5E] flex items-center gap-1.5 mt-0.5">
@@ -185,7 +185,7 @@ export default function WeddingCountdown() {
             <button
               onClick={downloadIcs}
               type="button"
-              className="flex-1 md:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium text-[#721825] bg-white border border-[#D4AF37]/50 rounded-lg hover:bg-[#FDF9EE] transition-colors"
+              className="flex-1 md:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium text-[#5d040f] bg-white border border-[#D4AF37]/50 rounded-lg hover:bg-[#FDF9EE] transition-colors"
             >
               <BellRing className="w-3.5 h-3.5" />
               Download .ICS
@@ -194,7 +194,7 @@ export default function WeddingCountdown() {
               href={getGoogleCalendarUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 md:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium text-white bg-[#721825] rounded-lg hover:bg-[#5C101C] transition-colors shadow-sm"
+              className="flex-1 md:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium text-white bg-[#5d040f] rounded-lg hover:bg-[#7D1223] transition-colors shadow-sm"
             >
               <Calendar className="w-3.5 h-3.5 text-[#F4E295]" />
               Add to Google Calendar

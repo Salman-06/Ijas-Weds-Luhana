@@ -61,7 +61,7 @@ export default function GoldenPetalsRain() {
           type="button"
           onClick={() => setIsEnabled(true)}
           title="Enable Falling Petals"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[#D4AF37]/40 text-[#721825] text-xs font-medium shadow-xs hover:bg-[#FAF6F0] transition-colors"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[#D4AF37]/40 text-[#5d040f] text-xs font-medium shadow-xs hover:bg-[#FAF6F0] transition-colors"
         >
           <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
           <span>Petals: Off</span>
@@ -116,7 +116,7 @@ export default function GoldenPetalsRain() {
           type="button"
           onClick={() => setIsEnabled(false)}
           title="Pause Falling Petals"
-          className="group flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur-md border border-[#D4AF37]/30 text-[#721825] text-xs font-medium opacity-60 hover:opacity-100 transition-all shadow-xs"
+          className="group flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur-md border border-[#D4AF37]/30 text-[#5d040f] text-xs font-medium opacity-60 hover:opacity-100 transition-all shadow-xs"
         >
           <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
           <span>Golden Petals</span>
