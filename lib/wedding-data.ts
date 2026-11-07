@@ -50,7 +50,7 @@ export const WEDDING_COUPLE = {
 export const WEDDING_EVENTS: WeddingEvent[] = [
   {
     id: 'mehendi',
-    name: 'Mehendi & Sangeet Celebration',
+    name: 'Mehendi Celebration',
     tamilName: 'மஞ்சள் & மெஹந்தி திருவிழா',
     type: 'mehendi',
     dateStr: 'Saturday, 12th December 2026',
