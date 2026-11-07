@@ -58,8 +58,6 @@ export const WEDDING_EVENTS: WeddingEvent[] = [
     venueName: 'Divya Hall',
     address: 'Echanari, Opp Indane Gas Godown',
     city: 'Coimbatore, Tamil Nadu',
-    dressCode: 'Festive Mustard, Olive & Emerald Florals',
-    paletteColors: ['#EAB308', '#15803D', '#B45309', '#FEF08A'],
     description:
       'An intimate evening of delicate henna patterns, joyous traditional melodies, laughter, and sweet pre-wedding celebrations.',
     mapLink: 'https://maps.app.goo.gl/PvU4dMtRYwbdTK7g6',
@@ -77,8 +75,6 @@ export const WEDDING_EVENTS: WeddingEvent[] = [
     venueName: 'Sri Kantha Mahal',
     address: 'Coimbatore Main Road',
     city: 'Pollachi, Tamil Nadu',
-    dressCode: 'Traditional Silk & Kurta Sherwani',
-    paletteColors: ['#7A1926', '#D4AF37', '#FFFBF2', '#991B1B'],
     description:
       'The sacred Islamic marriage solemnization (Nikah) amidst blessings of Almighty Allah, family elders, and cherished friends, followed by traditional wedding lunch feast.',
     mapLink: 'https://maps.google.com/?q=Sri+Kantha+Mahal+Coimbatore+Main+Road+Pollachi',
