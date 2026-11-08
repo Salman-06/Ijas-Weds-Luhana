@@ -15,7 +15,7 @@ interface EnvelopeGateProps {
 
 /**
  * Cinematic Wedding Gatefold Invitation Cover:
- * - Master studio photographic representation of the authentic invitation card
+ * - Master studio photographic representation of the user's uploaded wedding invitation card
  * - Pristine ivory pearl cardstock with watercolor crimson/burgundy peonies and gold botanicals
  * - Left and Right 3D double doors meeting down the exact center seam
  * - Central interactive monogram seal ("I & L") with instant touch & click opening response
@@ -97,7 +97,7 @@ export default function InvitationEnvelopeGate({
           </div>
         </div>
 
-        {/* 3D GATEFOLD DOUBLE DOORS CONTAINER */}
+        {/* 3D GATEFOLD DOUBLE DOORS CONTAINER (Using user's exact uploaded cover image split across left and right panels) */}
         <div className="absolute inset-0 rounded-3xl overflow-hidden border-2 border-[#D4AF37]/70 shadow-[0_35px_80px_-15px_rgba(0,0,0,0.95),0_0_60px_rgba(212,175,55,0.3)] bg-[#FAF5EB] pointer-events-none z-10">
           <div className="absolute inset-0 flex" style={{ transformStyle: 'preserve-3d' }}>
             {/* LEFT DOOR PANEL */}
@@ -108,12 +108,12 @@ export default function InvitationEnvelopeGate({
             >
               <div className="relative w-full h-full bg-[#FAF5EB]">
                 <Image
-                  src="/assets/images/door_left_studio.jpg"
+                  src="/assets/images/wedding_card_cover_studio.jpg"
                   alt="Wedding Invitation Left Gatefold Door"
                   fill
                   priority
                   unoptimized
-                  className="object-cover object-right"
+                  className="object-cover object-left scale-105"
                 />
                 <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black/30 to-transparent pointer-events-none" />
                 <div className="absolute inset-y-0 right-0 w-[2px] bg-[#D4AF37]/90 pointer-events-none" />
@@ -128,12 +128,12 @@ export default function InvitationEnvelopeGate({
             >
               <div className="relative w-full h-full bg-[#FAF5EB]">
                 <Image
-                  src="/assets/images/door_right_studio.jpg"
+                  src="/assets/images/wedding_card_cover_studio.jpg"
                   alt="Wedding Invitation Right Gatefold Door"
                   fill
                   priority
                   unoptimized
-                  className="object-cover object-left"
+                  className="object-cover object-right scale-105"
                 />
                 <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black/30 to-transparent pointer-events-none" />
                 <div className="absolute inset-y-0 left-0 w-[2px] bg-[#D4AF37]/90 pointer-events-none" />
@@ -142,7 +142,7 @@ export default function InvitationEnvelopeGate({
           </div>
         </div>
 
-        {/* CENTRAL INTERACTIVE MONOGRAM SEAL */}
+        {/* CENTRAL INTERACTIVE MONOGRAM SEAL (Overlaid on user's exact card cover image) */}
         <div
           className={`absolute top-[51.5%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-700 flex flex-col items-center justify-center pointer-events-auto ${
             isOpen ? 'opacity-0 scale-125 pointer-events-none' : 'opacity-100 scale-100'
