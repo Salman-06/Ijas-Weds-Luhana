@@ -1,6 +1,7 @@
 'use client';
 
 export default function ErrorBoundary({
+  error,
   reset,
 }: {
   error: Error & { digest?: string };
@@ -13,12 +14,12 @@ export default function ErrorBoundary({
           Something went wrong
         </h2>
         <p className="text-sm text-[#6B5B52] mb-6">
-          An unexpected error occurred while loading this section.
+          {error?.message || 'An unexpected error occurred while loading this section.'}
         </p>
         <button
           type="button"
           onClick={() => reset()}
-          className="px-6 py-2.5 rounded-full bg-[#5d040f] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#7D1223] transition-colors"
+          className="px-6 py-2.5 rounded-full bg-[#5d040f] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#7D1223] transition-colors cursor-pointer"
         >
           Try Again
         </button>
@@ -26,3 +27,4 @@ export default function ErrorBoundary({
     </div>
   );
 }
+

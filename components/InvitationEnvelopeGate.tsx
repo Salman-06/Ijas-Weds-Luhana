@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { Sparkles } from 'lucide-react';
-import MonogramSealSvg from './MonogramSealSvg';
 
 interface EnvelopeGateProps {
   isOpen: boolean;
@@ -106,18 +105,19 @@ export default function InvitationEnvelopeGate({
                 isOpen ? 'open' : ''
               }`}
             >
-              <div className="relative w-full h-full bg-[#FAF5EB]">
+              <div className="absolute top-0 left-0 w-[200%] h-full bg-[#FAF5EB]">
                 <Image
                   src="/assets/images/wedding_card_cover_studio.jpg"
                   alt="Wedding Invitation Left Gatefold Door"
                   fill
                   priority
-                  unoptimized
-                  className="object-cover object-left scale-105"
+                  referrerPolicy="no-referrer"
+                  className="object-cover object-center"
                 />
-                <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black/30 to-transparent pointer-events-none" />
-                <div className="absolute inset-y-0 right-0 w-[2px] bg-[#D4AF37]/90 pointer-events-none" />
               </div>
+              {/* Subtle seam shadow and delicate gold foil rim down the open edge */}
+              <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black/25 to-transparent pointer-events-none" />
+              <div className="absolute inset-y-0 right-0 w-[2px] bg-[#D4AF37]/90 pointer-events-none" />
             </div>
 
             {/* RIGHT DOOR PANEL */}
@@ -126,51 +126,53 @@ export default function InvitationEnvelopeGate({
                 isOpen ? 'open' : ''
               }`}
             >
-              <div className="relative w-full h-full bg-[#FAF5EB]">
+              <div className="absolute top-0 left-[-100%] w-[200%] h-full bg-[#FAF5EB]">
                 <Image
                   src="/assets/images/wedding_card_cover_studio.jpg"
                   alt="Wedding Invitation Right Gatefold Door"
                   fill
                   priority
-                  unoptimized
-                  className="object-cover object-right scale-105"
+                  referrerPolicy="no-referrer"
+                  className="object-cover object-center"
                 />
-                <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black/30 to-transparent pointer-events-none" />
-                <div className="absolute inset-y-0 left-0 w-[2px] bg-[#D4AF37]/90 pointer-events-none" />
               </div>
+              {/* Subtle seam shadow and delicate gold foil rim down the open edge */}
+              <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black/25 to-transparent pointer-events-none" />
+              <div className="absolute inset-y-0 left-0 w-[2px] bg-[#D4AF37]/90 pointer-events-none" />
             </div>
           </div>
         </div>
 
-        {/* CENTRAL INTERACTIVE MONOGRAM SEAL (Overlaid on user's exact card cover image) */}
+        {/* CENTRAL INTERACTIVE ACTION & TOUCH AREA (Matching exact single logo from media file) */}
         <div
-          className={`absolute top-[51.5%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-700 flex flex-col items-center justify-center pointer-events-auto ${
-            isOpen ? 'opacity-0 scale-125 pointer-events-none' : 'opacity-100 scale-100'
+          className={`absolute inset-0 z-50 transition-all duration-700 pointer-events-auto ${
+            isOpen ? 'opacity-0 scale-105 pointer-events-none' : 'opacity-100 scale-100'
           }`}
         >
+          {/* Circular touch target directly over the single central seal */}
           <div
             role="button"
             tabIndex={0}
             onClick={handleOpenTrigger}
             onTouchStart={handleOpenTrigger}
             aria-label="Touch monogram seal to open wedding invitation"
-            className="group relative flex flex-col items-center cursor-pointer focus:outline-none pointer-events-auto"
+            className="group absolute top-[48.8%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 sm:w-52 sm:h-52 md:w-56 md:h-56 rounded-full cursor-pointer focus:outline-none pointer-events-auto flex items-center justify-center"
           >
-            {/* Soft subtle glow behind badge */}
-            <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-[#D4AF37]/30 via-[#F4E295]/40 to-[#D4AF37]/30 blur-md pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity" />
+            {/* Subtle interactive hover / pulse glow ring on the single seal */}
+            <div className="absolute inset-0 rounded-full border-2 border-[#D4AF37]/0 group-hover:border-[#D4AF37]/70 group-hover:shadow-[0_0_35px_rgba(212,175,55,0.5)] transition-all duration-300 pointer-events-none" />
+          </div>
 
-            {/* Exact Monogram Seal Badge */}
-            <div className="relative rounded-full transition-transform duration-300 group-hover:scale-105 active:scale-95 shadow-[0_20px_45px_rgba(74,8,47,0.7)] pointer-events-auto">
-              <MonogramSealSvg
-                size={175}
-                className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44"
-              />
-            </div>
-
-            {/* "TOUCH SEAL TO OPEN" Interactive Action Button */}
-            <div className="mt-4 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full bg-[#4A082F]/95 backdrop-blur-md border-2 border-[#D4AF37] shadow-[0_12px_28px_rgba(74,8,47,0.65)] flex items-center gap-2.5 group-hover:bg-[#5d040f] group-hover:border-[#F4E295] group-hover:scale-105 transition-all pointer-events-auto">
+          {/* "TOUCH SEAL TO OPEN" Interactive Action Button positioned below the seal */}
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={handleOpenTrigger}
+            onTouchStart={handleOpenTrigger}
+            className="group absolute top-[64%] sm:top-[65%] left-1/2 -translate-x-1/2 z-50 cursor-pointer focus:outline-none pointer-events-auto"
+          >
+            <div className="px-5 py-2 sm:px-6 sm:py-2.5 rounded-full bg-[#4A082F]/95 backdrop-blur-md border-2 border-[#D4AF37] shadow-[0_12px_28px_rgba(74,8,47,0.65)] flex items-center gap-2.5 group-hover:bg-[#5d040f] group-hover:border-[#F4E295] group-hover:scale-105 transition-all">
               <Sparkles className="w-4 h-4 text-[#F4E295] animate-pulse" />
-              <span className="text-[11px] sm:text-xs font-bold text-[#FFF5D6] tracking-[0.3em] uppercase drop-shadow-xs">
+              <span className="text-[11px] sm:text-xs font-bold text-[#FFF5D6] tracking-[0.3em] uppercase drop-shadow-xs whitespace-nowrap">
                 TOUCH SEAL TO OPEN
               </span>
               <Sparkles className="w-4 h-4 text-[#F4E295] animate-pulse" />

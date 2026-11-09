@@ -58,10 +58,10 @@ export default function WeddingHero() {
         <div className="inline-block relative mb-8 hero-animate-bloom" style={{ animationDelay: '0.24s' }}>
           <div className="relative group mx-auto">
             <MonogramSealSvg
-              size={110}
-              className="w-24 h-24 md:w-28 md:h-28 mx-auto drop-shadow-royal"
+              size={140}
+              className="w-32 h-32 md:w-36 md:h-36 mx-auto drop-shadow-royal"
             />
-            <div className="absolute -inset-1.5 rounded-full border border-[#D4AF37]/40 pointer-events-none animate-pulse-glow" />
+            <div className="absolute -inset-2 rounded-full border border-[#D4AF37]/40 pointer-events-none animate-pulse-glow" />
           </div>
           <div className="text-[11px] font-arabic text-[#5d040f] mt-2 font-medium">
             {WEDDING_COUPLE.arabicCalligraphy}

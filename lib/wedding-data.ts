@@ -25,7 +25,7 @@ export const WEDDING_COUPLE = {
     parents: 'S/o Mr. M. Abdul Hakkeem & Mrs. S. Shafi',
     familyCity: 'Coimbatore',
     company: 'Smile Automation',
-    tagline: 'Definite Machining Solution',
+    tagline: 'Coimbatore',
   },
   bride: {
     fullName: 'J. Luhana Fathima',
